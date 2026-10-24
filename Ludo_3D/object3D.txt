@@ -1,0 +1,11 @@
+3D Ludo Game
+
+Main 3D objects:
+- Ludo board
+- Four home areas
+- 16 Ludo pieces
+- Ludo path cells
+- Center triangles
+- Dice
+- Shader border
+- Ground

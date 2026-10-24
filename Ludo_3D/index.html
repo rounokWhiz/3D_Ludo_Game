@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Ludo Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: #20252b;
+        }
+
+        #info {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            color: white;
+            background: rgba(0, 0, 0, 0.55);
+            padding: 8px 12px;
+            border-radius: 8px;
+            z-index: 10;
+            font-size: 12px;
+            line-height: 1.5;
+            max-width: 460px;
+        }
+
+        #info h2 {
+            margin: 0 0 6px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        #helpIcon {
+            font-size: 13px;
+            opacity: 0.7;
+            cursor: help;
+        }
+
+        #controls {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        button:hover { background: #dddddd; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        #diceResult { font-weight: bold; font-size: 12px; }
+
+        .toggleRow {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+        }
+
+        #turnIndicator {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 11;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 13px;
+            color: white;
+            background: #e74c3c;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        #winMessage {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            display: none;
+            white-space: nowrap;
+        }
+
+        #numberPicker {
+            padding: 5px 6px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="turnIndicator">Turn: RED</div>
+<div id="winMessage"></div>
+
+<div id="info">
+    <h2>
+        3D Ludo Game
+        <span id="helpIcon" title="W/S: zoom &#10;A/D: orbit (auto-orbits when idle) &#10;Click board: swap texture">ⓘ</span>
+    </h2>
+
+    <div id="controls">
+        <label class="toggleRow">
+            Pick:
+            <select id="numberPicker">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </label>
+        <button id="rollButton">ROLL DICE</button>
+        <span id="diceResult">-</span>
+        <button id="nextTurnButton">NEXT TURN</button>
+        <button id="cameraResetButton">RESET CAM</button>
+        <label class="toggleRow">
+            <input type="checkbox" id="autoOrbitToggle" checked>
+            Auto-orbit
+        </label>
+    </div>
+</div>
+
+<script type="module" src="./ludo.js"></script>
+<script type="module" src="./win-game.js"></script>
+</body>
+</html>
